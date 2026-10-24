@@ -44,6 +44,7 @@ public interface RepartidorService {
      */
     Repartidor buscarEntidadPorId(UUID id);
 
+
     /**
      * Filtra repartidores según su estado operativo.
      *

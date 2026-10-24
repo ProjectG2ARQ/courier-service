@@ -30,31 +30,6 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
-    @ExceptionHandler(EnvioNoEncontradoException.class)
-    public ResponseEntity<ErrorResponseDto> handleEnvioNoEncontrado(
-            EnvioNoEncontradoException ex, HttpServletRequest request) {
-        ErrorResponseDto error = ErrorResponseDto.builder()
-                .timestamp(Instant.now())
-                .status(HttpStatus.NOT_FOUND.value())
-                .error("Not Found")
-                .message(ex.getMessage())
-                .path(request.getRequestURI())
-                .build();
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
-    }
-
-    @ExceptionHandler(CodigoSeguimientoDuplicadoException.class)
-    public ResponseEntity<ErrorResponseDto> handleCodigoDuplicado(
-            CodigoSeguimientoDuplicadoException ex, HttpServletRequest request) {
-        ErrorResponseDto error = ErrorResponseDto.builder()
-                .timestamp(Instant.now())
-                .status(HttpStatus.CONFLICT.value())
-                .error("Conflict")
-                .message(ex.getMessage())
-                .path(request.getRequestURI())
-                .build();
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
-    }
 
     @ExceptionHandler(EstadoEnvioInvalidoException.class)
     public ResponseEntity<ErrorResponseDto> handleEstadoInvalido(

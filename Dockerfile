@@ -26,8 +26,8 @@ USER spring:spring
 # Copiar únicamente el archivo jar resultante desde la etapa builder
 COPY --from=builder /build/target/*.jar app.jar
 
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=8081
+EXPOSE 8081
 
 # Flag necesario para compatibilidad de bytecode Java 25 con el escáner de Spring
 ENTRYPOINT ["java", "-Dspring.classformat.ignore=true", "-jar", "app.jar"]

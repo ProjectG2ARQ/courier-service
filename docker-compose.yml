@@ -18,7 +18,7 @@ services:
       timeout: 5s
       retries: 5
 
-  shipment-service:
+  courier-service:
     build:
       context: .
       dockerfile: Dockerfile

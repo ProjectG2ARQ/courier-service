@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.dto;
+package ar.edu.unju.fi.arquitecturas.courierservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

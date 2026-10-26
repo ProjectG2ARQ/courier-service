@@ -1,6 +1,6 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.exception;
+package ar.edu.unju.fi.arquitecturas.courierservice.exception;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.dto.ErrorResponseDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.dto.ErrorResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,20 +20,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NegocioException.class)
     public ResponseEntity<ErrorResponseDto> handleNegocio(
             NegocioException ex, HttpServletRequest request) {
-        ErrorResponseDto error = ErrorResponseDto.builder()
-                .timestamp(Instant.now())
-                .status(HttpStatus.BAD_REQUEST.value())
-                .error("Bad Request")
-                .message(ex.getMessage())
-                .path(request.getRequestURI())
-                .build();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
-    }
-
-
-    @ExceptionHandler(EstadoEnvioInvalidoException.class)
-    public ResponseEntity<ErrorResponseDto> handleEstadoInvalido(
-            EstadoEnvioInvalidoException ex, HttpServletRequest request) {
         ErrorResponseDto error = ErrorResponseDto.builder()
                 .timestamp(Instant.now())
                 .status(HttpStatus.BAD_REQUEST.value())

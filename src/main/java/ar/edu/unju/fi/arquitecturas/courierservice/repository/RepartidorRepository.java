@@ -1,7 +1,7 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.repository;
+package ar.edu.unju.fi.arquitecturas.courierservice.repository;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.Repartidor;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.Repartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

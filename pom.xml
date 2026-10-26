@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>ar.edu.unju.fi.arquitecturas</groupId>
-    <artifactId>shipment-service</artifactId>
+    <artifactId>courier-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>shipment-service</name>
-    <description>shipment-service</description>
+    <name>courier-service</name>
+    <description>courier-service</description>
     <url/>
     <licenses>
         <license/>
@@ -117,7 +117,7 @@
                 <configuration>
                     <!-- Al declarar la clase Main explícitamente, evitamos que Spring
                          intente escanear el bytecode de Java 25 y se rompa -->
-                    <mainClass>ar.edu.unju.fi.arquitecturas.shipmentservice.ShipmentServiceApplication</mainClass>
+                    <mainClass>ar.edu.unju.fi.arquitecturas.courierservice.CourierServiceApplication</mainClass>
 
                     <!-- Excluye Lombok del artefacto final empaquetado -->
                     <excludes>

@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.config;
+package ar.edu.unju.fi.arquitecturas.courierservice.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
@@ -13,9 +13,9 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("LogiTrack - shipment-service API")
+                        .title("LogiTrack - courier-service API")
                         .version("1.0.0")
-                        .description("Microservicio de gestión de envíos, asignación de repartidores y clientes.")
+                        .description("Microservicio de gestión y administración de repartidores.")
                         .contact(new Contact().name("Grupo 2 ARQ")));
     }
 }

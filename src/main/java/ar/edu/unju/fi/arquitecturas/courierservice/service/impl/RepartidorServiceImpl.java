@@ -1,13 +1,13 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.service.impl;
+package ar.edu.unju.fi.arquitecturas.courierservice.service.impl;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.dto.RepartidorRequestDto;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.dto.RepartidorResponseDto;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.exception.NegocioException;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.exception.RecursoNoEncontradoException;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.Repartidor;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.enums.EstadoRepartidor;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.repository.RepartidorRepository;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.service.RepartidorService;
+import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorRequestDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorResponseDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.exception.NegocioException;
+import ar.edu.unju.fi.arquitecturas.courierservice.exception.RecursoNoEncontradoException;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.Repartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.repository.RepartidorRepository;
+import ar.edu.unju.fi.arquitecturas.courierservice.service.RepartidorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

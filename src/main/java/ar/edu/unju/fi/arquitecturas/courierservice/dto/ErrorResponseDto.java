@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.dto;
+package ar.edu.unju.fi.arquitecturas.courierservice.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class ErrorResponseDto {
     @Schema(description = "Mensaje detallado describiendo la causa del error")
     private String message;
 
-    @Schema(description = "Ruta del endpoint solicitado", example = "/api/v1/envios")
+    @Schema(description = "Ruta del endpoint solicitado", example = "/api/repartidores")
     private String path;
 
     @Schema(description = "Detalle de errores específicos por campo (en caso de validaciones fallidas)")

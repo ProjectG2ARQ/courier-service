@@ -1,6 +1,6 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.model;
+package ar.edu.unju.fi.arquitecturas.courierservice.model;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
 import jakarta.persistence.*;
 import lombok.*;
 

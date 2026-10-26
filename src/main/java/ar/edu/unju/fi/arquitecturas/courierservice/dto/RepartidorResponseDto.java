@@ -1,6 +1,6 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.dto;
+package ar.edu.unju.fi.arquitecturas.courierservice.dto;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 

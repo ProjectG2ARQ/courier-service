@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.exception;
+package ar.edu.unju.fi.arquitecturas.courierservice.exception;
 
 public class RecursoNoEncontradoException extends RuntimeException {
     public RecursoNoEncontradoException(String mensaje) {

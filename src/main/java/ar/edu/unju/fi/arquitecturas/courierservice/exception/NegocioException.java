@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.exception;
+package ar.edu.unju.fi.arquitecturas.courierservice.exception;
 
 public class NegocioException extends RuntimeException {
     public NegocioException(String message) {

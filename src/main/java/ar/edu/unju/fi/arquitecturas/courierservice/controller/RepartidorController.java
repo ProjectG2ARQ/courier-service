@@ -1,9 +1,9 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.controller;
+package ar.edu.unju.fi.arquitecturas.courierservice.controller;
 
-import ar.edu.unju.fi.arquitecturas.shipmentservice.dto.RepartidorRequestDto;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.dto.RepartidorResponseDto;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.model.enums.EstadoRepartidor;
-import ar.edu.unju.fi.arquitecturas.shipmentservice.service.RepartidorService;
+import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorRequestDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorResponseDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.service.RepartidorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;

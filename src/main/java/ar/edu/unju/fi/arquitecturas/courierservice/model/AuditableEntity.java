@@ -1,4 +1,4 @@
-package ar.edu.unju.fi.arquitecturas.shipmentservice.model;
+package ar.edu.unju.fi.arquitecturas.courierservice.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

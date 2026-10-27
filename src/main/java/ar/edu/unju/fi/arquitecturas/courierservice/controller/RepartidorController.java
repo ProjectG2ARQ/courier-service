@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/repartidores")
+@RequestMapping("/api/v1/repartidores")
 @RequiredArgsConstructor
 @Tag(name = "Repartidores", description = "Endpoints para la gestión de repartidores")
 public class RepartidorController {

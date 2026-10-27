@@ -32,6 +32,7 @@ services:
       DB_USERNAME: root
       DB_PASSWORD: root
       SERVER_PORT: 8081
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://host.docker.internal:8085"
     ports:
       - "8081:8081"
     networks:

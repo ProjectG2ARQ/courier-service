@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,22 +35,34 @@ public class RepartidorServiceImpl implements RepartidorService {
                 .estado(requestDto.getEstado())
                 .build();
 
-        return toResponseDto(repartidorRepository.save(repartidor));
+        Repartidor repartidorGuardado = repartidorRepository.save(repartidor);
+        return toResponseDto(repartidorGuardado);
+    }
+
+    @Override
+    @Transactional
+    public RepartidorResponseDto actualizarEstadoRepartidor(UUID id, RepartidorRequestDto requestDto) {
+        Repartidor repartidor = buscarEntidadPorId(id);
+
+        repartidor.setEstado(requestDto.getEstado());
+
+        Repartidor repartidorActualizado = repartidorRepository.save(repartidor);
+        return toResponseDto(repartidorActualizado);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<RepartidorResponseDto> obtenerTodosLosRepartidores() {
-        return repartidorRepository.findAll()
-                .stream()
+        return repartidorRepository.findAll().stream()
                 .map(this::toResponseDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     @Override
     @Transactional(readOnly = true)
     public RepartidorResponseDto buscarRepartidorPorId(UUID id) {
-        return toResponseDto(buscarEntidadPorId(id));
+        Repartidor repartidor = buscarEntidadPorId(id);
+        return toResponseDto(repartidor);
     }
 
     @Override
@@ -62,20 +75,18 @@ public class RepartidorServiceImpl implements RepartidorService {
     @Override
     @Transactional(readOnly = true)
     public List<RepartidorResponseDto> findByEstado(EstadoRepartidor estado) {
-        return repartidorRepository.findByEstado(estado)
-                .stream()
+        return repartidorRepository.findByEstado(estado).stream()
                 .map(this::toResponseDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
-    private RepartidorResponseDto toResponseDto(Repartidor entidad) {
+    // Método auxiliar para mapear de Entidad a ResponseDto
+    private RepartidorResponseDto toResponseDto(Repartidor repartidor) {
         return RepartidorResponseDto.builder()
-                .id(entidad.getId())
-                .nombre(entidad.getNombre())
-                .tipoVehiculo(entidad.getTipoVehiculo())
-                .estado(entidad.getEstado())
-                .fechaCreacion(entidad.getFechaCreacion())
-                .fechaUltimaModificacion(entidad.getFechaUltimaModificacion())
+                .id(repartidor.getId())
+                .nombre(repartidor.getNombre())
+                .tipoVehiculo(repartidor.getTipoVehiculo())
+                .estado(repartidor.getEstado())
                 .build();
     }
 }

@@ -29,33 +29,43 @@ public class RepartidorController {
     @Operation(summary = "Registrar un nuevo repartidor")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Repartidor registrado con éxito"),
-            @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+            @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos o nombre duplicado")
     })
-    public ResponseEntity<RepartidorResponseDto> guardarRepartidor(@Valid @RequestBody RepartidorRequestDto repartidor) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(repartidorService.guardarRepartidor(repartidor));
+    public ResponseEntity<RepartidorResponseDto> guardarRepartidor(@Valid @RequestBody RepartidorRequestDto repartidorRequestDto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(repartidorService.guardarRepartidor(repartidorRequestDto));
+    }
+
+    @PatchMapping("/{id}/estado")
+    @Operation(summary = "Actualizar el estado de un repartidor")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Estado actualizado con éxito"),
+            @ApiResponse(responseCode = "404", description = "Repartidor no encontrado")
+    })
+    public ResponseEntity<RepartidorResponseDto> actualizarEstadoRepartidor(
+            @PathVariable UUID id,
+            @Valid @RequestBody RepartidorRequestDto repartidorRequestDto) {
+        return ResponseEntity.ok(repartidorService.actualizarEstadoRepartidor(id, repartidorRequestDto));
     }
 
     @GetMapping
-    @Operation(summary = "Listar todos los repartidores")
-    @ApiResponse(responseCode = "200", description = "Listado de repartidores")
-    public ResponseEntity<List<RepartidorResponseDto>> listarRepartidores() {
+    @Operation(summary = "Obtener todos los repartidores")
+    public ResponseEntity<List<RepartidorResponseDto>> obtenerTodosLosRepartidores() {
         return ResponseEntity.ok(repartidorService.obtenerTodosLosRepartidores());
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar repartidor por ID")
+    @Operation(summary = "Buscar un repartidor por su ID")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Repartidor encontrado"),
             @ApiResponse(responseCode = "404", description = "Repartidor no encontrado")
     })
-    public ResponseEntity<RepartidorResponseDto> buscarPorId(@PathVariable UUID id) {
+    public ResponseEntity<RepartidorResponseDto> buscarRepartidorPorId(@PathVariable UUID id) {
         return ResponseEntity.ok(repartidorService.buscarRepartidorPorId(id));
     }
 
     @GetMapping("/estado/{estado}")
-    @Operation(summary = "Listar repartidores por estado")
-    @ApiResponse(responseCode = "200", description = "Listado de repartidores filtrados")
-    public ResponseEntity<List<RepartidorResponseDto>> findByEstado(@PathVariable EstadoRepartidor estado) {
+    @Operation(summary = "Filtrar repartidores por estado")
+    public ResponseEntity<List<RepartidorResponseDto>> obtenerPorEstado(@PathVariable EstadoRepartidor estado) {
         return ResponseEntity.ok(repartidorService.findByEstado(estado));
     }
 }

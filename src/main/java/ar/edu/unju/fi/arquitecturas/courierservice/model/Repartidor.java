@@ -25,6 +25,9 @@ public class Repartidor extends AuditableEntity {
     @Column(name = "tipo_vehiculo", nullable = false)
     private String tipoVehiculo;
 
+    @Column(name = "user_id", unique = true)
+    private Long userId;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EstadoRepartidor estado;

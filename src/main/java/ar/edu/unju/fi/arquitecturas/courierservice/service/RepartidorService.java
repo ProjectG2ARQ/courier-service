@@ -21,4 +21,6 @@ public interface RepartidorService {
     Repartidor buscarEntidadPorId(UUID id);
 
     List<RepartidorResponseDto> findByEstado(EstadoRepartidor estado);
+
+    RepartidorResponseDto buscarPorUserId(Long userId);
 }

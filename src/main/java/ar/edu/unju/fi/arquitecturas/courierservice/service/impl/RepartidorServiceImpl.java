@@ -89,4 +89,11 @@ public class RepartidorServiceImpl implements RepartidorService {
                 .estado(repartidor.getEstado())
                 .build();
     }
+    @Override
+    @Transactional(readOnly = true)
+    public RepartidorResponseDto buscarPorUserId(Long userId) {
+        Repartidor repartidor = repartidorRepository.findByUserId(userId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró repartidor vinculado al usuario ID: " + userId));
+        return toResponseDto(repartidor);
+    }
 }

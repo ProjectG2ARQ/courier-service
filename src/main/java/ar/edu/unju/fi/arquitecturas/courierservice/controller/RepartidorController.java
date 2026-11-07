@@ -2,7 +2,11 @@ package ar.edu.unju.fi.arquitecturas.courierservice.controller;
 
 import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorRequestDto;
 import ar.edu.unju.fi.arquitecturas.courierservice.dto.RepartidorResponseDto;
+import ar.edu.unju.fi.arquitecturas.courierservice.exception.NegocioException;
+import ar.edu.unju.fi.arquitecturas.courierservice.exception.RecursoNoEncontradoException;
+import ar.edu.unju.fi.arquitecturas.courierservice.model.Repartidor;
 import ar.edu.unju.fi.arquitecturas.courierservice.model.enums.EstadoRepartidor;
+import ar.edu.unju.fi.arquitecturas.courierservice.repository.RepartidorRepository;
 import ar.edu.unju.fi.arquitecturas.courierservice.service.RepartidorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -67,5 +71,14 @@ public class RepartidorController {
     @Operation(summary = "Filtrar repartidores por estado")
     public ResponseEntity<List<RepartidorResponseDto>> obtenerPorEstado(@PathVariable EstadoRepartidor estado) {
         return ResponseEntity.ok(repartidorService.findByEstado(estado));
+    }
+    @GetMapping("/mi-perfil")
+    @Operation(summary = "Obtener los datos operativos del repartidor logueado")
+    public ResponseEntity<RepartidorResponseDto> obtenerMiPerfil(
+            @RequestHeader(value = "X-Auth-User-Id", required = false) Long userId) {
+        if (userId == null) {
+            throw new NegocioException("Falta la cabecera de autenticación de usuario.");
+        }
+        return ResponseEntity.ok(repartidorService.buscarPorUserId(userId));
     }
 }

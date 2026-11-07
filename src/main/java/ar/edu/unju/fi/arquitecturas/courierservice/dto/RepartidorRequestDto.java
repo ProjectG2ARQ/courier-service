@@ -23,4 +23,7 @@ public class RepartidorRequestDto {
 
     @NotNull(message = "El estado es obligatorio")
     private EstadoRepartidor estado;
+
+    @NotNull(message = "El ID es obligatorio")
+    private Long userId;
 }

@@ -33,6 +33,7 @@ public class RepartidorServiceImpl implements RepartidorService {
                 .nombre(requestDto.getNombre())
                 .tipoVehiculo(requestDto.getTipoVehiculo())
                 .estado(requestDto.getEstado())
+                .userId(requestDto.getUserId())
                 .build();
 
         Repartidor repartidorGuardado = repartidorRepository.save(repartidor);
@@ -80,6 +81,14 @@ public class RepartidorServiceImpl implements RepartidorService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public RepartidorResponseDto buscarPorUserId(Long userId) {
+        Repartidor repartidor = repartidorRepository.findByUserId(userId)
+                .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró repartidor vinculado al usuario ID: " + userId));
+        return toResponseDto(repartidor);
+    }
+
     // Método auxiliar para mapear de Entidad a ResponseDto
     private RepartidorResponseDto toResponseDto(Repartidor repartidor) {
         return RepartidorResponseDto.builder()
@@ -87,13 +96,9 @@ public class RepartidorServiceImpl implements RepartidorService {
                 .nombre(repartidor.getNombre())
                 .tipoVehiculo(repartidor.getTipoVehiculo())
                 .estado(repartidor.getEstado())
+                .userId(repartidor.getUserId())
+                .fechaCreacion(repartidor.getFechaCreacion())
+                .fechaUltimaModificacion(repartidor.getFechaUltimaModificacion())
                 .build();
-    }
-    @Override
-    @Transactional(readOnly = true)
-    public RepartidorResponseDto buscarPorUserId(Long userId) {
-        Repartidor repartidor = repartidorRepository.findByUserId(userId)
-                .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró repartidor vinculado al usuario ID: " + userId));
-        return toResponseDto(repartidor);
     }
 }

@@ -19,6 +19,7 @@ public class RepartidorResponseDto {
     private String nombre;
     private String tipoVehiculo;
     private EstadoRepartidor estado;
+    private Long userId;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaUltimaModificacion;
 }

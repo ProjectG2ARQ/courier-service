@@ -72,6 +72,7 @@ public class RepartidorController {
     public ResponseEntity<List<RepartidorResponseDto>> obtenerPorEstado(@PathVariable EstadoRepartidor estado) {
         return ResponseEntity.ok(repartidorService.findByEstado(estado));
     }
+
     @GetMapping("/mi-perfil")
     @Operation(summary = "Obtener los datos operativos del repartidor logueado")
     public ResponseEntity<RepartidorResponseDto> obtenerMiPerfil(
@@ -80,5 +81,16 @@ public class RepartidorController {
             throw new NegocioException("Falta la cabecera de autenticación de usuario.");
         }
         return ResponseEntity.ok(repartidorService.buscarPorUserId(userId));
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Eliminar lógicamente un repartidor (Soft Delete)")
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Repartidor dado de baja con éxito"),
+            @ApiResponse(responseCode = "404", description = "Repartidor no encontrado")
+    })
+    public ResponseEntity<Void> eliminarRepartidor(@PathVariable UUID id) {
+        repartidorService.eliminarRepartidor(id);
+        return ResponseEntity.noContent().build();
     }
 }

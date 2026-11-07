@@ -23,4 +23,6 @@ public interface RepartidorService {
     List<RepartidorResponseDto> findByEstado(EstadoRepartidor estado);
 
     RepartidorResponseDto buscarPorUserId(Long userId);
+
+    void eliminarRepartidor(UUID id);
 }

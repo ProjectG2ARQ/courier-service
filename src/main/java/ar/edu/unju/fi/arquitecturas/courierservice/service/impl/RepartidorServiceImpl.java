@@ -54,7 +54,7 @@ public class RepartidorServiceImpl implements RepartidorService {
     @Override
     @Transactional(readOnly = true)
     public List<RepartidorResponseDto> obtenerTodosLosRepartidores() {
-        return repartidorRepository.findAll().stream()
+        return repartidorRepository.findByEstadoNot(EstadoRepartidor.ELIMINADO).stream()
                 .map(this::toResponseDto)
                 .collect(Collectors.toList());
     }
@@ -87,6 +87,14 @@ public class RepartidorServiceImpl implements RepartidorService {
         Repartidor repartidor = repartidorRepository.findByUserId(userId)
                 .orElseThrow(() -> new RecursoNoEncontradoException("No se encontró repartidor vinculado al usuario ID: " + userId));
         return toResponseDto(repartidor);
+    }
+
+    @Override
+    @Transactional
+    public void eliminarRepartidor(UUID id) {
+        Repartidor repartidor = buscarEntidadPorId(id);
+        repartidor.setEstado(EstadoRepartidor.ELIMINADO);
+        repartidorRepository.save(repartidor);
     }
 
     // Método auxiliar para mapear de Entidad a ResponseDto

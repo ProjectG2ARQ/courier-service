@@ -14,6 +14,8 @@ public interface RepartidorRepository extends JpaRepository<Repartidor, UUID> {
 
     List<Repartidor> findByEstado(EstadoRepartidor estado);
 
+    List<Repartidor> findByEstadoNot(EstadoRepartidor estado);
+
     boolean existsByNombreIgnoreCase(String nombre);
 
     Optional<Repartidor> findByUserId(Long userId);
